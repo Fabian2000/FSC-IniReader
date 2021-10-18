@@ -31,3 +31,6 @@ using (FSCIniStream ini = new FSCIniStream());
 }
 ```
 It is important to use a using or dispose, otherwise the file will not save
+
+---
+Some features are missing or you found a bug? Message me on discord, every idea is welcome: Discord -> Fabian#3563 (Don't message me for fun!)
