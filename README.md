@@ -15,7 +15,7 @@ public static bool DeleteSection(string filename, string section)
 
 Initial Methods
 ```cs
-using (FSCIniStream ini = new FSCIniStream());
+using (FSCIniStream ini = new FSCIniStream())
 {
   ini.Read(...)
   ini.Write(...)
