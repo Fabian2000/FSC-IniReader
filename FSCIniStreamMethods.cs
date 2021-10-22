@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -256,10 +256,14 @@ namespace FSC_IniReader
                 if (section == null)
                 {
                     _iniFileNoSections.Remove(_iniFileNoSections.Where(item => item.StartsWith(key + "=")).First());
+
+                    return true;
                 }
                 else
                 {
                     _iniFileSections[section].Remove(_iniFileSections[section].Where(item => item.StartsWith(key + "=")).First());
+
+                    return true;
                 }
             }
 
@@ -282,7 +286,7 @@ namespace FSC_IniReader
             {
                 _iniFileSections.Remove(section);
 
-                return _iniFileSections.ContainsKey(section);
+                return !_iniFileSections.ContainsKey(section);
             }
 
             return false;
