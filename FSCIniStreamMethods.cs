@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -290,6 +290,79 @@ namespace FSC_IniReader
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Collects all Sections in a list
+        /// </summary>
+        /// <param name="ignoreComments"></param>
+        /// <param name="customCommentSymbol"></param>
+        /// <returns></returns>
+        public List<string> GetAllSections(bool ignoreComments = true, string customCommentSymbol = ";")
+        {
+            List<string> sections = new List<string>();
+
+            foreach(string section in _iniFileSections.Keys.ToList<string>())
+            {
+                if (!section.StartsWith(";" + customCommentSymbol) && !section.StartsWith("[" + customCommentSymbol) && !ignoreComments)
+                {
+                    sections.Add(section);
+                }
+                else if (ignoreComments)
+                {
+                    sections.Add(section);
+                }
+            }
+
+            return sections;
+        }
+
+        /// <summary>
+        /// Collects all Keys in a list from the given section. If section empty, the keys without section will be returned
+        /// </summary>
+        /// <param name="section"></param>
+        /// <param name="ignoreComments"></param>
+        /// <param name="customCommentSymbol"></param>
+        /// <returns></returns>
+        public List<string> GetAllKeys(string section = "", bool ignoreComments = true, string customCommentSymbol = ";")
+        {
+            if (_IsEmptyOrSpace(section))
+            {
+                section = null;
+            }
+
+            List<string> keys = new List<string>();
+
+            if (section == null)
+            {
+                foreach (string key in _iniFileNoSections)
+                {
+                    if (!key.StartsWith(customCommentSymbol) && !ignoreComments)
+                    {
+                        keys.Add(key.Substring(0, key.IndexOf('=')));
+                    }
+                    else if (ignoreComments)
+                    {
+                        keys.Add(key.Substring(0, key.IndexOf('=')));
+                    }
+                }
+            }
+            else
+            {
+                foreach (string key in _iniFileSections[section])
+                {
+                    if (!key.StartsWith(customCommentSymbol) && !ignoreComments)
+                    {
+                        keys.Add(key.Substring(0, key.IndexOf('=')));
+                    }
+                    else if (ignoreComments)
+                    {
+                        keys.Add(key.Substring(0, key.IndexOf('=')));
+                    }
+                }
+            }
+
+            return keys;
         }
     }
 }

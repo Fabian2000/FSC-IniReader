@@ -55,5 +55,21 @@ namespace FSC_IniReader
                 return fscIniStream.DeleteSection(section);
             }
         }
+
+        public static List<string> GetAllSections(string filename)
+        {
+            using (FSCIniStream fscIniStream = new FSCIniStream(filename))
+            {
+                return fscIniStream.GetAllSections();
+            }
+        }
+
+        public static List<string> GetAllKeys(string filename, string section = "")
+        {
+            using (FSCIniStream fscIniStream = new FSCIniStream(filename))
+            {
+                return fscIniStream.GetAllKeys(section);
+            }
+        }
     }
 }
