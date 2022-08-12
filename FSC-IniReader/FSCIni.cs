@@ -6,9 +6,33 @@ namespace FSC_IniReader
     {
         private List<FSCIniSection> _iniSections = new List<FSCIniSection>();
 
-        public FSCIni(string ini)
+        public FSCIni(string iniContent)
         {
             // TODO: Ini To Class
+
+            var lines = iniContent.Split("\n").ToList();
+
+            for (var i = 0; i < lines.Count; i++)
+            {
+                if (!lines[i].Contains("=") && !(lines[i].StartsWith("[") && lines[i].EndsWith("]")))
+                {
+                    lines.Remove(lines[i]);
+
+                    continue;
+                }
+
+                lines[i] = lines[i].Trim();
+            }
+
+            string lastSection = string.Empty;
+
+            foreach (var line in lines)
+            {
+                if (line.Contains("="))
+                {
+                    
+                }
+            }
         }
 
         public FSCIniSection? this[string section]
