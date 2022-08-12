@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "FSC-IniReader": {
-      "commandName": "Executable",
-      "executablePath": "S:\\Projekte\\FSC-IniReader\\Live Test\\bin\\Debug\\net5.0-windows\\Live Test.exe"
-    }
-  }
-}
