@@ -7,6 +7,10 @@ namespace FSC_IniReader
     {
         private List<FSCIniSection> _iniSections = new List<FSCIniSection>();
 
+        /// <summary>
+        /// Creates a class from an ini file
+        /// </summary>
+        /// <param name="iniContent">A string that contains the data from the ini file [Section]\r\nkeyValue=something\r\n...</param>
         public FSCIni(string iniContent)
         {
             var lines = iniContent.Split("\n").ToList();
@@ -60,6 +64,12 @@ namespace FSC_IniReader
             }
         }
 
+        /// <summary>
+        /// Returns a section
+        /// </summary>
+        /// <param name="section"></param>
+        /// <returns></returns>
+        /// <exception cref="FSCIniException"></exception>
         public FSCIniSection? this[string section]
         {
             get => GetIniSection(section == string.Empty ? "NULL" : section);
@@ -83,6 +93,12 @@ namespace FSC_IniReader
             return _iniSections.Find(curSection => curSection?.Name?.Equals(section, StringComparison.OrdinalIgnoreCase) ?? false);
         }
 
+        /// <summary>
+        /// Adds a new section
+        /// </summary>
+        /// <param name="section"></param>
+        /// <returns></returns>
+        /// <exception cref="FSCIniException"></exception>
         public FSCIniSection Add(string section)
         {
             section = section == string.Empty ? "NULL" : section;
@@ -107,28 +123,51 @@ namespace FSC_IniReader
             return this[section] ?? new FSCIniSection();
         }
 
+        /// <summary>
+        /// Deletes a section
+        /// </summary>
+        /// <param name="section"></param>
+        /// <returns></returns>
         public bool Delete(string section)
         {
             section = section == string.Empty ? "NULL" : section;
             return _iniSections.Remove(GetIniSection(section) ?? new FSCIniSection());
         }
 
+        /// <summary>
+        /// Asks, if a section exists
+        /// </summary>
+        /// <param name="section"></param>
+        /// <returns></returns>
         public bool HasSection(string section)
         {
             section = section == string.Empty ? "NULL" : section;
             return GetIniSection(section) != null;
         }
 
+        /// <summary>
+        /// Returns all sections
+        /// </summary>
+        /// <returns></returns>
         public List<FSCIniSection> GetAllSections()
         {
             return _iniSections;
         }
 
+        /// <summary>
+        /// Creates a string from the ini class (Export method)
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return ToString(false);
         }
 
+        /// <summary>
+        /// Creates a string from the ini class (Export method)
+        /// </summary>
+        /// <param name="minify">If true, there will be no extra lines when a new section starts</param>
+        /// <returns></returns>
         public string ToString(bool minify)
         {
             var stringBuilder = new StringBuilder();

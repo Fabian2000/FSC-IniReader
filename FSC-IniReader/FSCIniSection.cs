@@ -29,6 +29,9 @@ namespace FSC_IniReader
             }
         }
 
+        /// <summary>
+        /// Contains the name of the current section
+        /// </summary>
         public string Name { get => _sectionName; internal set { _sectionName = value; } }
 
         private FSCIniKey? GetIniKey(string key)
@@ -36,6 +39,13 @@ namespace FSC_IniReader
             return _iniKeys.Find(curKey => curKey?.Key?.Equals(key, StringComparison.OrdinalIgnoreCase) ?? false);
         }
 
+        /// <summary>
+        /// Adds a new key value pair to a section
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        /// <exception cref="FSCIniException"></exception>
         public FSCIniKey Add(string key, string value)
         {
             if (string.IsNullOrWhiteSpace(key) && key != string.Empty)
@@ -64,16 +74,30 @@ namespace FSC_IniReader
             return GetIniKey(key) ?? new FSCIniKey();
         }
 
+        /// <summary>
+        /// Deletes a key value pair from a section
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public bool Delete(string key)
         {
             return _iniKeys.Remove(GetIniKey(key) ?? new FSCIniKey());
         }
 
+        /// <summary>
+        /// Asks, if a key value pair exists in a section
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public bool HasKey(string key)
         {
             return GetIniKey(key) != null;
         }
 
+        /// <summary>
+        /// Returns all key value pairs from a section
+        /// </summary>
+        /// <returns></returns>
         public List<FSCIniKey> GetAllKeys()
         {
             return _iniKeys;

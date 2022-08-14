@@ -5,6 +5,23 @@
     <RootNamespace>FSC_IniReader</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <AssemblyVersion>2.0.0</AssemblyVersion>
+    <FileVersion>2.0.0</FileVersion>
+    <Version>2.0.0</Version>
+    <Authors>Fabian Schlüter</Authors>
+    <Description>A powerful crossplatform IniReader</Description>
+    <Copyright>Fabian Schlüter</Copyright>
+    <PackageProjectUrl>https://github.com/Fabian2000/FSC-IniReader</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Fabian2000/FSC-IniReader.git</RepositoryUrl>
+    <PackageTags>Ini;File;Ini-Reader;FSC-IniReader;Ini-Editor;File-Editor;Editor;Save;Database;Reader;Writer;Converter;Ini-Converter</PackageTags>
+    <PackageReleaseNotes>New rewrite
+- Now ini files get delivered as a string.
+-- That makes it possible to files in your own choice of encoding and you can add ini content into your source code.
+- The code is easier to use.
+- The script is shorter.
+- Upgrade to .Net6.
+- Key value pairs (without section) will now be added to section [NULL]</PackageReleaseNotes>
   </PropertyGroup>
 
 </Project>
