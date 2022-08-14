@@ -28,7 +28,7 @@ namespace FSC_IniReader
                 }
             }
 
-            var lastSection = string.Empty;
+            var lastSection = "NULL";
 
             foreach (var line in lines)
             {
@@ -40,7 +40,7 @@ namespace FSC_IniReader
                         Value = line.Substring(line.IndexOf('=') + 1, line.Length - line.IndexOf('=') - 1)
                     };
 
-                    if (HasSection(lastSection))
+                    if (!HasSection(lastSection))
                     {
                         Add(lastSection);
                     }
@@ -62,10 +62,10 @@ namespace FSC_IniReader
 
         public FSCIniSection? this[string section]
         {
-            get => GetIniSection(section);
+            get => GetIniSection(section == string.Empty ? "NULL" : section);
             set
             {
-                var iniSection = GetIniSection(section);
+                var iniSection = GetIniSection(section == string.Empty ? "NULL" : section);
 
                 if (iniSection == null)
                 {
@@ -85,6 +85,8 @@ namespace FSC_IniReader
 
         public FSCIniSection Add(string section)
         {
+            section = section == string.Empty ? "NULL" : section;
+
             if (string.IsNullOrWhiteSpace(section) && section != string.Empty)
             {
                 throw new FSCIniException("Section may not be null or whitespace");
@@ -107,11 +109,13 @@ namespace FSC_IniReader
 
         public bool Delete(string section)
         {
+            section = section == string.Empty ? "NULL" : section;
             return _iniSections.Remove(GetIniSection(section) ?? new FSCIniSection());
         }
 
         public bool HasSection(string section)
         {
+            section = section == string.Empty ? "NULL" : section;
             return GetIniSection(section) != null;
         }
 
