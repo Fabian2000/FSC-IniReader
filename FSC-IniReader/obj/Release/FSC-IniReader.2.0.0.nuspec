@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>FSC-IniReader</id>
+    <version>2.0.0</version>
+    <authors>Fabian Schlüter</authors>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <projectUrl>https://github.com/Fabian2000/FSC-IniReader</projectUrl>
+    <description>A powerful crossplatform IniReader</description>
+    <releaseNotes>New rewrite
+- Now ini files get delivered as a string.
+-- That makes it possible to files in your own choice of encoding and you can add ini content into your source code.
+- The code is easier to use.
+- The script is shorter.
+- Upgrade to .Net6.
+- Key value pairs (without section) will now be added to section [NULL]</releaseNotes>
+    <copyright>Fabian Schlüter</copyright>
+    <tags>Ini File Ini-Reader FSC-IniReader Ini-Editor File-Editor Editor Save Database Reader Writer Converter Ini-Converter</tags>
+    <repository url="https://github.com/Fabian2000/FSC-IniReader.git" />
+    <dependencies>
+      <group targetFramework="net6.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\bin\Release\net6.0\FSC-IniReader.dll" target="lib\net6.0\FSC-IniReader.dll" />
+    <file src="S:\Projekte\GitHub\FSC-IniReader\LICENSE" target="LICENSE" />
+  </files>
+</package>

@@ -22,6 +22,16 @@
 - The script is shorter.
 - Upgrade to .Net6.
 - Key value pairs (without section) will now be added to section [NULL]</PackageReleaseNotes>
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
+
+  <ItemGroup>
+	  <None Include="S:\\Projekte\\GitHub\\FSC-IniReader\\LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="LICENSE" />
+  </ItemGroup>
 
 </Project>
