@@ -9,20 +9,20 @@
   },
   "packageFolders": {
     "C:\\Users\\schlu\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "S:\\Programme\\Visual Studio\\2019\\Shared\\NuGetPackages": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projekte\\Privat\\GitHub\\FSC-IniReader\\FSC-IniReader\\FSC-IniReader.csproj",
+      "projectUniqueName": "S:\\Projekte\\GitHub\\FSC-IniReader\\FSC-IniReader\\FSC-IniReader.csproj",
       "projectName": "FSC-IniReader",
-      "projectPath": "C:\\Projekte\\Privat\\GitHub\\FSC-IniReader\\FSC-IniReader\\FSC-IniReader.csproj",
+      "projectPath": "S:\\Projekte\\GitHub\\FSC-IniReader\\FSC-IniReader\\FSC-IniReader.csproj",
       "packagesPath": "C:\\Users\\schlu\\.nuget\\packages\\",
-      "outputPath": "C:\\Projekte\\Privat\\GitHub\\FSC-IniReader\\FSC-IniReader\\obj\\",
+      "outputPath": "S:\\Projekte\\GitHub\\FSC-IniReader\\FSC-IniReader\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "S:\\Programme\\Visual Studio\\2019\\Shared\\NuGetPackages",
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
@@ -36,6 +36,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -68,7 +69,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

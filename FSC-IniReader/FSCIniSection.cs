@@ -2,7 +2,7 @@
 
 namespace FSC_IniReader
 {
-    public class FSCIniSection
+    public class FSCIniSection : IComparable<FSCIniSection>
     {
         private List<FSCIniKey> _iniKeys = new List<FSCIniKey>();
         private string _sectionName = string.Empty;
@@ -33,10 +33,10 @@ namespace FSC_IniReader
 
         private FSCIniKey? GetIniKey(string key)
         {
-            return _iniKeys.Find(curKey => curKey?.Value?.Equals(key, StringComparison.OrdinalIgnoreCase) ?? false);
+            return _iniKeys.Find(curKey => curKey?.Key?.Equals(key, StringComparison.OrdinalIgnoreCase) ?? false);
         }
 
-        public void Add(string key, string value)
+        public FSCIniKey Add(string key, string value)
         {
             if (string.IsNullOrWhiteSpace(key) && key != string.Empty)
             {
@@ -60,6 +60,8 @@ namespace FSC_IniReader
 
                 _iniKeys.Sort();
             }
+
+            return GetIniKey(key) ?? new FSCIniKey();
         }
 
         public bool Delete(string key)
@@ -75,6 +77,11 @@ namespace FSC_IniReader
         public List<FSCIniKey> GetAllKeys()
         {
             return _iniKeys;
+        }
+
+        public int CompareTo(FSCIniSection? other)
+        {
+            return Name.CompareTo(other?.Name);
         }
     }
 }

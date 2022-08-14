@@ -1,4 +1,5 @@
 ﻿using FSC_IniReader.Exceptions;
+using System.Text;
 
 namespace FSC_IniReader
 {
@@ -8,29 +9,53 @@ namespace FSC_IniReader
 
         public FSCIni(string iniContent)
         {
-            // TODO: Ini To Class
-
             var lines = iniContent.Split("\n").ToList();
 
             for (var i = 0; i < lines.Count; i++)
             {
+                lines[i] = lines[i].Trim();
+
                 if (!lines[i].Contains("=") && !(lines[i].StartsWith("[") && lines[i].EndsWith("]")))
                 {
                     lines.Remove(lines[i]);
 
+                    if (lines.Count > 0)
+                    {
+                        i--;
+                    }
+
                     continue;
                 }
-
-                lines[i] = lines[i].Trim();
             }
 
-            string lastSection = string.Empty;
+            var lastSection = string.Empty;
 
             foreach (var line in lines)
             {
                 if (line.Contains("="))
                 {
-                    
+                    var iniKeyValue = new FSCIniKey()
+                    {
+                        Key = line.Substring(0, line.IndexOf('=')),
+                        Value = line.Substring(line.IndexOf('=') + 1, line.Length - line.IndexOf('=') - 1)
+                    };
+
+                    if (HasSection(lastSection))
+                    {
+                        Add(lastSection);
+                    }
+
+                    var section = GetIniSection(lastSection);
+                    section?.Add(iniKeyValue.Key, iniKeyValue.Value);
+                }
+                else if (line.Contains("[") && line.Contains("]"))
+                {
+                    var section = line.Replace("[", "");
+                    section = section.Replace("]", "");
+
+                    Add(section);
+
+                    lastSection = section;
                 }
             }
         }
@@ -58,7 +83,7 @@ namespace FSC_IniReader
             return _iniSections.Find(curSection => curSection?.Name?.Equals(section, StringComparison.OrdinalIgnoreCase) ?? false);
         }
 
-        public void Add(string section)
+        public FSCIniSection Add(string section)
         {
             if (string.IsNullOrWhiteSpace(section) && section != string.Empty)
             {
@@ -76,6 +101,8 @@ namespace FSC_IniReader
 
                 _iniSections.Sort();
             }
+
+            return this[section] ?? new FSCIniSection();
         }
 
         public bool Delete(string section)
@@ -95,8 +122,41 @@ namespace FSC_IniReader
 
         public override string ToString()
         {
-            // TODO: Add Class To Ini
-            return "";
+            return ToString(false);
+        }
+
+        public string ToString(bool minify)
+        {
+            var stringBuilder = new StringBuilder();
+
+            foreach (var iniSection in GetAllSections())
+            {
+                stringBuilder.AppendLine($"[{iniSection.Name}]");
+
+                foreach (var iniKeyValue in iniSection.GetAllKeys())
+                {
+                    stringBuilder.AppendLine($"{iniKeyValue.Key}={iniKeyValue.Value}");
+                }
+
+                if (!minify)
+                {
+                    stringBuilder.AppendLine();
+                }
+            }
+
+            var result = stringBuilder.ToString();
+
+            if (result.EndsWith(Environment.NewLine))
+            {
+                while (result.Contains(Environment.NewLine + Environment.NewLine))
+                {
+                    result = result.Replace(Environment.NewLine + Environment.NewLine, Environment.NewLine);
+                }
+
+                result = result.Substring(0, result.Length - Environment.NewLine.Length);
+            }
+
+            return result;
         }
     }
 }
