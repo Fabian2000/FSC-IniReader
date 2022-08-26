@@ -8,13 +8,7 @@
     <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
     <projectUrl>https://github.com/Fabian2000/FSC-IniReader</projectUrl>
     <description>A powerful crossplatform IniReader</description>
-    <releaseNotes>New rewrite
-- Now ini files get delivered as a string.
--- That makes it possible to files in your own choice of encoding and you can add ini content into your source code.
-- The code is easier to use.
-- The script is shorter.
-- Upgrade to .Net6.
-- Key value pairs (without section) will now be added to section [NULL]</releaseNotes>
+    <releaseNotes>Added FSCIniOptions</releaseNotes>
     <copyright>Fabian Schlüter</copyright>
     <tags>Ini File Ini-Reader FSC-IniReader Ini-Editor File-Editor Editor Save Database Reader Writer Converter Ini-Converter</tags>
     <repository url="https://github.com/Fabian2000/FSC-IniReader.git" />
