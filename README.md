@@ -19,6 +19,8 @@ using FSC_IniReader;
 var content = "..."; // <- Ini file content
 
 var ini = new FSCIni(content);
+or
+var ini = new FSCIni(content, new FSCOptions());
 ```
 3. Access the ini sections
 ```cs
@@ -45,6 +47,8 @@ Delete(string key);
 HasKey(string key);
 List<FSCIniKey> GetAllKeys();
 ```
+
+FSCOptions contains some extended customize possibilities.
 
 # FSC-IniReader [OLD]
 #### To get the old source, check out the .Backup folder
