@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "FSC-IniReader/2.0.0": {
+      "FSC-IniReader/2.1.0": {
         "runtime": {
           "FSC-IniReader.dll": {}
         }
@@ -14,7 +14,7 @@
     }
   },
   "libraries": {
-    "FSC-IniReader/2.0.0": {
+    "FSC-IniReader/2.1.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

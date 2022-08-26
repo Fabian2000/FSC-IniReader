@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>FSC-IniReader</id>
-    <version>2.0.0</version>
+    <version>2.1.0</version>
     <authors>Fabian Schlüter</authors>
     <license type="file">LICENSE</license>
     <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
@@ -23,7 +23,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\bin\Debug\net6.0\FSC-IniReader.dll" target="lib\net6.0\FSC-IniReader.dll" />
+    <file src="S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\bin\Release\net6.0\FSC-IniReader.dll" target="lib\net6.0\FSC-IniReader.dll" />
     <file src="S:\Projekte\GitHub\FSC-IniReader\LICENSE" target="LICENSE" />
   </files>
 </package>

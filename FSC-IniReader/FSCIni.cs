@@ -11,13 +11,27 @@ namespace FSC_IniReader
         /// Creates a class from an ini file
         /// </summary>
         /// <param name="iniContent">A string that contains the data from the ini file [Section]\r\nkeyValue=something\r\n...</param>
-        public FSCIni(string iniContent)
+        public FSCIni(string iniContent) : this(iniContent, new FSCIniOptions())
+        {
+        }
+
+        /// <summary>
+        /// Creates a class from an ini file
+        /// </summary>
+        /// <param name="iniContent">A string that contains the data from the ini file [Section]\r\nkeyValue=something\r\n...</param>
+        /// <param name="options">Defines some little extra possibilities to setup the ini reader</param>
+        public FSCIni(string iniContent, FSCIniOptions options)
         {
             var lines = iniContent.Split("\n").ToList();
 
             for (var i = 0; i < lines.Count; i++)
             {
                 lines[i] = lines[i].Trim();
+
+                if (options.IgnoreLines.IsMatch(lines[i]))
+                {
+                    continue;
+                }
 
                 if (!lines[i].Contains("=") && !(lines[i].StartsWith("[") && lines[i].EndsWith("]")))
                 {
@@ -36,6 +50,11 @@ namespace FSC_IniReader
 
             foreach (var line in lines)
             {
+                if (options.IgnoreLines.IsMatch(line))
+                {
+                    continue;
+                }
+
                 if (line.Contains("="))
                 {
                     var iniKeyValue = new FSCIniKey()
