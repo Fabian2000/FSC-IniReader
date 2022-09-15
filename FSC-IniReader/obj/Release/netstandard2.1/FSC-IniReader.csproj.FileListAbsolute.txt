@@ -1,0 +1,10 @@
+S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\bin\Release\netstandard2.1\FSC-IniReader.deps.json
+S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\bin\Release\netstandard2.1\FSC-IniReader.dll
+S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\bin\Release\netstandard2.1\FSC-IniReader.pdb
+S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\obj\Release\netstandard2.1\FSC-IniReader.csproj.AssemblyReference.cache
+S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\obj\Release\netstandard2.1\FSC-IniReader.GeneratedMSBuildEditorConfig.editorconfig
+S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\obj\Release\netstandard2.1\FSC-IniReader.AssemblyInfoInputs.cache
+S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\obj\Release\netstandard2.1\FSC-IniReader.AssemblyInfo.cs
+S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\obj\Release\netstandard2.1\FSC-IniReader.csproj.CoreCompileInputs.cache
+S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\obj\Release\netstandard2.1\FSC-IniReader.dll
+S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\obj\Release\netstandard2.1\FSC-IniReader.pdb

@@ -1,4 +1,7 @@
 ﻿using FSC_IniReader.Exceptions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace FSC_IniReader
@@ -22,7 +25,7 @@ namespace FSC_IniReader
         /// <param name="options">Defines some little extra possibilities to setup the ini reader</param>
         public FSCIni(string iniContent, FSCIniOptions options)
         {
-            var lines = iniContent.Split("\n").ToList();
+            var lines = iniContent.Split('\n').ToList();
 
             for (var i = 0; i < lines.Count; i++)
             {

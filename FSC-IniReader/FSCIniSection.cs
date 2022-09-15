@@ -1,4 +1,6 @@
 ﻿using FSC_IniReader.Exceptions;
+using System;
+using System.Collections.Generic;
 
 namespace FSC_IniReader
 {
@@ -24,7 +26,7 @@ namespace FSC_IniReader
                 }
                 else
                 {
-                    keyValue.Value = value;
+                    keyValue.Value = value ?? string.Empty;
                 }
             }
         }

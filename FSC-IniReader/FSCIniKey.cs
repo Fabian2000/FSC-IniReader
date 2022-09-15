@@ -1,4 +1,6 @@
-﻿namespace FSC_IniReader
+﻿using System;
+
+namespace FSC_IniReader
 {
     public class FSCIniKey : IComparable<FSCIniKey>
     {

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>FSC-IniReader</id>
+    <version>2.1.0</version>
+    <authors>Fabian Schlüter</authors>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <projectUrl>https://github.com/Fabian2000/FSC-IniReader</projectUrl>
+    <description>A powerful crossplatform IniReader</description>
+    <releaseNotes>Added FSCIniOptions</releaseNotes>
+    <copyright>Fabian Schlüter</copyright>
+    <tags>Ini File Ini-Reader FSC-IniReader Ini-Editor File-Editor Editor Save Database Reader Writer Converter Ini-Converter</tags>
+    <repository url="https://github.com/Fabian2000/FSC-IniReader.git" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.8" />
+      <group targetFramework="net6.0" />
+      <group targetFramework=".NETStandard2.1" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\bin\Debug\net48\FSC-IniReader.dll" target="lib\net48\FSC-IniReader.dll" />
+    <file src="S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\bin\Debug\net6.0\FSC-IniReader.dll" target="lib\net6.0\FSC-IniReader.dll" />
+    <file src="S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\bin\Debug\netstandard2.1\FSC-IniReader.dll" target="lib\netstandard2.1\FSC-IniReader.dll" />
+    <file src="S:\Projekte\GitHub\FSC-IniReader\LICENSE" target="LICENSE" />
+  </files>
+</package>

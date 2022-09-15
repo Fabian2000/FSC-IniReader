@@ -1,31 +1,48 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>net6.0;net48;netstandard2.0</TargetFrameworks>
+	<LangVersion>10.0</LangVersion>
     <RootNamespace>FSC_IniReader</RootNamespace>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <AssemblyVersion>2.1.0</AssemblyVersion>
-    <FileVersion>2.1.0</FileVersion>
-    <Version>2.1.0</Version>
+    <AssemblyVersion>2.1.1</AssemblyVersion>
+    <FileVersion>2.1.1</FileVersion>
+    <Version>2.1.1</Version>
     <Authors>Fabian Schlüter</Authors>
     <Description>A powerful crossplatform IniReader</Description>
     <Copyright>Fabian Schlüter</Copyright>
     <PackageProjectUrl>https://github.com/Fabian2000/FSC-IniReader</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Fabian2000/FSC-IniReader.git</RepositoryUrl>
-    <PackageTags>Ini;File;Ini-Reader;FSC-IniReader;Ini-Editor;File-Editor;Editor;Save;Database;Reader;Writer;Converter;Ini-Converter</PackageTags>
-    <PackageReleaseNotes>Added FSCIniOptions</PackageReleaseNotes>
+    <PackageTags>Ini;File;Ini-Reader;FSC-IniReader;Ini-Editor;File-Editor;Editor;Save;Database;Reader;Writer;Converter;Ini-Converter;IniParser;Ini-Parser;Parser</PackageTags>
+    <PackageReleaseNotes>Updated TargetFrameworks</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Platforms>AnyCPU;ARM32;ARM64;x64;x86</Platforms>
+    <PackageIcon>ICON.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
 	  <None Include="S:\\Projekte\\GitHub\\FSC-IniReader\\LICENSE" Pack="true" PackagePath="" />
+	  <None Include="S:\\Projekte\\GitHub\\FSC-IniReader\\FSC-IniReader\\ICON.png" Pack="true" PackagePath="" />
+	  <None Include="S:\\Projekte\\GitHub\\FSC-IniReader\\FSC-IniReader\\README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="LICENSE" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ICON.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

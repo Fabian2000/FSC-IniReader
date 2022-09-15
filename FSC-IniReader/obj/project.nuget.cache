@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "XrROxPwWLQqpVX64VizcbFfAq6kILXzY/8k3P7H+WkHEIlOu7CFroChoMbtFr3AWTNuTjsh5JBybj2IcZk9gWw==",
+  "dgSpecHash": "x1WQMFtFEhVHf5aLBYx/WvT1OMRb++Mpblml9V/0i/4TG6YLZ9JylmcZgHvwCdEfWnX15iAqNy4gYKdgtSbZcQ==",
   "success": true,
   "projectFilePath": "S:\\Projekte\\GitHub\\FSC-IniReader\\FSC-IniReader\\FSC-IniReader.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\schlu\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\schlu\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
