@@ -1,9 +1,9 @@
 S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\bin\Debug\net48\FSC-IniReader.dll
-S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\bin\Debug\net48\FSC-IniReader.pdb
+S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\bin\Debug\net48\FSC-IniReader.xml
 S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\obj\Debug\net48\FSC-IniReader.csproj.AssemblyReference.cache
 S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\obj\Debug\net48\FSC-IniReader.GeneratedMSBuildEditorConfig.editorconfig
 S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\obj\Debug\net48\FSC-IniReader.AssemblyInfoInputs.cache
 S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\obj\Debug\net48\FSC-IniReader.AssemblyInfo.cs
 S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\obj\Debug\net48\FSC-IniReader.csproj.CoreCompileInputs.cache
 S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\obj\Debug\net48\FSC-IniReader.dll
-S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\obj\Debug\net48\FSC-IniReader.pdb
+S:\Projekte\GitHub\FSC-IniReader\FSC-IniReader\obj\Debug\net48\FSC-IniReader.xml

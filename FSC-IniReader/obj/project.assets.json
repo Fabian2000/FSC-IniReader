@@ -1,6 +1,8 @@
 {
   "version": 3,
   "targets": {
+    ".NETFramework,Version=v4.6": {},
+    ".NETFramework,Version=v4.7": {},
     ".NETFramework,Version=v4.8": {},
     ".NETStandard,Version=v2.0": {
       "Microsoft.NETCore.Platforms/1.1.0": {
@@ -28,7 +30,9 @@
         }
       }
     },
-    "net6.0": {}
+    "net5.0": {},
+    "net6.0": {},
+    "net7.0": {}
   },
   "libraries": {
     "Microsoft.NETCore.Platforms/1.1.0": {
@@ -177,11 +181,15 @@
     }
   },
   "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.6": [],
+    ".NETFramework,Version=v4.7": [],
     ".NETFramework,Version=v4.8": [],
     ".NETStandard,Version=v2.0": [
       "NETStandard.Library >= 2.0.3"
     ],
-    "net6.0": []
+    "net5.0": [],
+    "net6.0": [],
+    "net7.0": []
   },
   "packageFolders": {
     "C:\\Users\\schlu\\.nuget\\packages\\": {},
@@ -189,7 +197,7 @@
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
-    "version": "2.1.1",
+    "version": "2.2.0",
     "restore": {
       "projectUniqueName": "S:\\Projekte\\GitHub\\FSC-IniReader\\FSC-IniReader\\FSC-IniReader.csproj",
       "projectName": "FSC-IniReader",
@@ -209,8 +217,12 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
+        "net46",
+        "net47",
         "net48",
+        "net5.0",
         "net6.0",
+        "net7.0",
         "netstandard2.0"
       ],
       "sources": {
@@ -219,8 +231,24 @@
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "projectReferences": {}
+        },
         "net6.0": {
           "targetAlias": "net6.0",
+          "projectReferences": {}
+        },
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {}
+        },
+        "net46": {
+          "targetAlias": "net46",
+          "projectReferences": {}
+        },
+        "net47": {
+          "targetAlias": "net47",
           "projectReferences": {}
         },
         "net48": {
@@ -239,6 +267,26 @@
       }
     },
     "frameworks": {
+      "net5.0": {
+        "targetAlias": "net5.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+      },
       "net6.0": {
         "targetAlias": "net6.0",
         "imports": [
@@ -257,6 +305,34 @@
             "privateAssets": "all"
           }
         },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+      },
+      "net7.0": {
+        "targetAlias": "net7.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+      },
+      "net46": {
+        "targetAlias": "net46",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+      },
+      "net47": {
+        "targetAlias": "net47",
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       },
       "net48": {

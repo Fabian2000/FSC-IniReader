@@ -6,6 +6,7 @@ using System.Text;
 
 namespace FSC_IniReader
 {
+    [Obsolete("You can still use this class, but you should think about switching to the new improved FSCIni class in namespace using FSC_IniReader.Future")]
     public class FSCIni
     {
         private List<FSCIniSection> _iniSections = new List<FSCIniSection>();
