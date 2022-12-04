@@ -2,12 +2,75 @@
 New, better, easier ...
 The powerful crossplatform IniReader is back.
 
+## 2.2.0 Early Access
+
+### What's new?
+Big remake. Please use the namespace FSCIni.Future. The old namespace is automatically marked as obsolete.
+If you find any issue, please message me. More details on github.
+- Added custom datatypes like FSCIniTypes
+- Added new methods like ini1.Merge(ini2);
+- Upgrade to .Net 7
+
+### Example Code
+```cs
+using FSC_IniReader.Future;
+
+FSCIni ini = @"
+[AccountInfo]
+Username = Jack
+Password = JacksPassword1234
+
+[Settings]
+EnableDarkmode = true
+RememberLogin = false
+ProgramWidth = 720
+ProgramHeight = 480
+";
+
+if (ini["Settings"]["ProgramWidth"].GetInt == 720)
+{
+    ini["Settings"]["ProgramWidth"] = 1080;
+}
+
+Console.WriteLine(ini.ToString());
+```
+
+### Example Code 2
+
+```cs
+using FSC_IniReader.Future;
+
+FSCIni ini = new FSCIni(@"
+[AccountInfo]
+Username = Jack
+Password = JacksPassword1234
+
+[Settings]
+EnableDarkmode = true
+RememberLogin = false
+ProgramWidth = 720
+ProgramHeight = 480
+");
+
+if (ini["Settings"]["ProgramWidth"].GetInt == 720)
+{
+    ini["Settings"]["ProgramWidth"] = 1080;
+}
+
+Console.WriteLine(ini.ToString());
+```
+
+### Options
+FSCIni got new options. Check out the constructor or the SetOptions Method
+
+## 2.1.0
+
 ### What's new?
 - Now ini files get delivered as a string. 
     - That makes it possible to files in your own choice of encoding and you can add ini content into your source code.
 - The code is easier to use.
 - The script is shorter.
-- Upgrade to .Net6.
+- Upgrade to .Net6. + (Since 2.1.1 more targets supported)
 - Key value pairs (without section) will now be added to section [NULL]
 
 ### How to use?
@@ -43,60 +106,13 @@ string ToString(bool minify);
 
 KeyValues:
 FSCIniKey Add(string key, string value);
-Delete(string key);
-HasKey(string key);
+bool Delete(string key);
+bool HasKey(string key);
 List<FSCIniKey> GetAllKeys();
 ```
 
 FSCIniOptions contains some extended customize possibilities.
 
-# FSC-IniReader [OLD]
-#### To get the old source, check out the .Backup folder
-A crossplatform ini reader and writer written in .Net 5
-
-Easy to use ini reader. Tested on Windows and Linux.
-
-Static Methods:
-```cs
-public static (string AsString, bool AsBool, short AsShort, int AsInt, long AsLong, float AsFloat, double AsDouble) Read(string filename, string key, string section = null)
-public static bool KeyExists(string filename, string key, string section = null)
-public static bool SectionExists(string filename, string section)
-public static void Write<T>(string filename, T content, string key, string section = null)
-public static bool DeleteKey(string filename, string key, string section = null)
-public static bool DeleteSection(string filename, string section)
-public static List<string> GetAllSections(string filename)
-public static List<string> GetAllKeys(string filename, string section = "")
-```
-
-Initial Methods
-```cs
-using (FSCIniStream ini = new FSCIniStream())
-{
-  ini.Read(...)
-  ini.Write(...)
-  ini.KeyExists(...)
-  ini.SectionExists(...)
-  ini.DeleteKey(...)
-  ini.DeleteSection(...)
-  ini.GetAllSections(...)
-  ini.GetAllKeys(...)
-  ini.Cancel // bool property
-  ini.SetEmptyLineBeforeSection // bool property
-  ini.GetStream()
-  ini.Close()
-  ini.Dispose()
-}
-```
-It is important to use a using or dispose, otherwise the file will not save
-
-Ini as Dictionary
-```cs
-FSCIniDictionary dictIni = new FSCIniDictionary();
-dictIni.IniFile[""]["ini"] = "New Content";
-dictIni.Save();
-
-The first [ ] is the section and the second [ ] is the key. To get keys without section, leave the section empty [""]
-```
-
 ---
+
 Some features are missing or you found a bug? Message me on discord, every idea is welcome: Discord -> Fabian#3563 (Don't message me for fun!)
