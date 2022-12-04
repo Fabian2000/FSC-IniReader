@@ -2,6 +2,69 @@
 New, better, easier ...
 The powerful crossplatform IniReader is back.
 
+## 2.2.0 Early Access
+
+### What's new?
+Big remake. Please use the namespace FSCIni.Future. The old namespace is automatically marked as obsolete.
+If you find any issue, please message me. More details on github.
+- Added custom datatypes like FSCIniTypes
+- Added new methods like ini1.Merge(ini2);
+- Upgrade to .Net 7
+
+### Example Code
+```cs
+using FSC_IniReader.Future;
+
+FSCIni ini = @"
+[AccountInfo]
+Username = Jack
+Password = JacksPassword1234
+
+[Settings]
+EnableDarkmode = true
+RememberLogin = false
+ProgramWidth = 720
+ProgramHeight = 480
+";
+
+if (ini["Settings"]["ProgramWidth"].GetInt == 720)
+{
+    ini["Settings"]["ProgramWidth"] = 1080;
+}
+
+Console.WriteLine(ini.ToString());
+```
+
+### Example Code 2
+
+```cs
+using FSC_IniReader.Future;
+
+FSCIni ini = new FSCIni(@"
+[AccountInfo]
+Username = Jack
+Password = JacksPassword1234
+
+[Settings]
+EnableDarkmode = true
+RememberLogin = false
+ProgramWidth = 720
+ProgramHeight = 480
+");
+
+if (ini["Settings"]["ProgramWidth"].GetInt == 720)
+{
+    ini["Settings"]["ProgramWidth"] = 1080;
+}
+
+Console.WriteLine(ini.ToString());
+```
+
+### Options
+FSCIni got new options. Check out the constructor or the SetOptions Method
+
+## 2.1.0
+
 ### What's new?
 - Now ini files get delivered as a string. 
     - That makes it possible to files in your own choice of encoding and you can add ini content into your source code.

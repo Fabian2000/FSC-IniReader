@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Text;
+using static System.Collections.Specialized.BitVector32;
 
 namespace FSC_IniReader.Future
 {
@@ -48,7 +51,7 @@ namespace FSC_IniReader.Future
         {
             get
             {
-                return new FSCIniSection();
+                return HasSection(section) ? _sections[_sections.FindIndex(param => param.Name == section)] : new FSCIniSection();
             }
         }
 
@@ -67,7 +70,22 @@ namespace FSC_IniReader.Future
         /// <param name="section">The name of the section</param>
         public void Add(string section)
         {
+            if (HasSection(section))
+            {
+                return;
+            }
 
+            if (!VerifySection(section))
+            {
+                return;
+            }
+
+            section = section.Replace("[", "").Replace("]", "");
+
+            var newSection = new FSCIniSection();
+            newSection.Name = section;
+
+            _sections.Add(newSection);
         }
 
         /// <summary>
@@ -77,37 +95,23 @@ namespace FSC_IniReader.Future
         /// <param name="overwrite">If a key in a section exists for both, the second ini key will overwrite the first one (if true)</param>
         public void Merge(FSCIni ini, bool overwrite)
         {
+            foreach (var section in ini.GetAllSections())
+            {
+                Add(section);
 
-        }
+                foreach (var key in ini[section].GetAllKeys())
+                {
+                    if (this[section].Add(key, ini[section][key]))
+                    {
+                        continue;
+                    }
 
-        /// <summary>
-        /// Splits the ini class into a list of ini classes
-        /// </summary>
-        /// <param name="afterXSections">The section index after that the split should happen (After a split, the counter jumps to 0 and counts again)</param>
-        /// <returns>A list of multiple ini classes</returns>
-        public List<FSCIni> Split(int afterXSections)
-        {
-            return new();
-        }
-
-        /// <summary>
-        /// Splits the ini class into a list of ini classes
-        /// </summary>
-        /// <param name="afterSection">The section name after that the split should happen</param>
-        /// <returns>A list of multiple ini classes</returns>
-        public List<FSCIni> Split(string afterSection)
-        {
-            return new();
-        }
-
-        /// <summary>
-        /// Splits the ini class into a list of ini classes
-        /// </summary>
-        /// <param name="afterSections">The section names after that the split should happen</param>
-        /// <returns>A list of multiple ini classes</returns>
-        public List<FSCIni> Split(params string[] afterSections)
-        {
-            return new();
+                    if (overwrite)
+                    {
+                        this[section][key] = ini[section][key];
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -116,17 +120,22 @@ namespace FSC_IniReader.Future
         /// <param name="section">The name of a section</param>
         public void Delete(string section)
         {
+            if (!HasSection(section) && _sections is null)
+            {
+                return;
+            }
 
+            _sections.Remove(this[section]);
         }
 
         /// <summary>
         /// Checks if a section exists
         /// </summary>
-        /// <param name="key">The name of a section</param>
+        /// <param name="section">The name of a section</param>
         /// <returns>Returns true, if the section was found</returns>
         public bool HasSection(string section)
         {
-            return false;
+            return _sections?.Find(prop => prop.Name == section) is not null;
         }
 
         /// <summary>
@@ -136,7 +145,31 @@ namespace FSC_IniReader.Future
         /// <param name="newSection">New name</param>
         public void Rename(string oldSection, string newSection)
         {
+            if (!HasSection(oldSection))
+            {
+                return;
+            }
 
+            if (!VerifySection(oldSection))
+            {
+                return;
+            }
+
+            oldSection = oldSection.Replace("[", "").Replace("]", "");
+
+            this[oldSection].Name = newSection;
+        }
+
+        /// <summary>
+        /// Create a copy of the current instance
+        /// </summary>
+        /// <returns>Returns a new instance of FSCIni</returns>
+        public FSCIni Copy()
+        {
+            var ini = new FSCIni();
+            ini.SetOptions(options => options = _options);
+            ini.Merge(this, false);
+            return ini;
         }
 
         /// <summary>
@@ -145,7 +178,12 @@ namespace FSC_IniReader.Future
         /// <returns>Returns all names of the sections</returns>
         public List<string> GetAllSections()
         {
-            return new();
+            if (IsEmpty())
+            {
+                return new List<string>();
+            }
+
+            return new List<string>(from section in _sections select section.Name);
         }
 
         /// <summary>
@@ -155,6 +193,18 @@ namespace FSC_IniReader.Future
         /// <returns>Returns a new ini class</returns>
         public FSCIni Extract(params string[] sections)
         {
+            var ini = Copy();
+
+            foreach (var section in ini.GetAllSections())
+            {
+                if (sections.Contains(section))
+                {
+                    continue;
+                }
+
+                ini.Delete(section);
+            }
+
             return new();
         }
 
@@ -198,18 +248,54 @@ namespace FSC_IniReader.Future
             return ini;
         }
 
-        public static FSCIni operator -(FSCIni ini1, FSCIni ini2)
-        {
-            return new();
-        }
-
         /// <summary>
         /// Returns the FSCIni class as Ini data for saving it for example as ini file
         /// </summary>
         /// <returns>Returns an ini data string</returns>
         public override string ToString()
         {
-            return string.Empty;
+            _sections.Sort();
+
+            if (_options.SortDirection == ListSortDirection.Descending)
+            {
+                _sections.Reverse();
+            }
+
+            foreach (var section in _sections)
+            {
+                section.Sort(_options.SortDirection);
+            }
+
+            var stringBuilder = new StringBuilder();
+
+            foreach (var section in _sections)
+            {
+                if (section.IsEmpty() && !_options.AllowSavingEmptySections)
+                {
+                    continue;
+                }
+
+                if (_options.UseNewLineBeforeSection)
+                {
+                    stringBuilder.AppendLine();
+                }
+
+                stringBuilder.AppendLine($"[{section.Name}]");
+
+                foreach (var key in section.GetAllKeys())
+                {
+                    if (_options.BeautifyWithSpaces)
+                    {
+                        stringBuilder.AppendLine($"{key} = {section[key]}");
+                    }
+                    else
+                    {
+                        stringBuilder.AppendLine($"{key}={section[key]}");
+                    }
+                }
+            }
+
+            return stringBuilder.ToString().Trim();
         }
     }
 }

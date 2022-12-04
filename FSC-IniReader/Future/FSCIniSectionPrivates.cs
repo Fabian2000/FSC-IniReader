@@ -9,7 +9,11 @@ namespace FSC_IniReader.Future
 
         private bool VerifyKey(string key)
         {
-            return string.IsNullOrWhiteSpace(key) && Regex.Unescape(key).Contains("""\""");
+            return (
+                !string.IsNullOrWhiteSpace(key) &&
+                !Regex.Unescape(key).Contains("""\""") &&
+                !key.Contains("=")
+            );
         }
     }
 }

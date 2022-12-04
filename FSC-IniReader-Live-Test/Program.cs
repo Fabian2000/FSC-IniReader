@@ -1,7 +1,21 @@
 ﻿using FSC_IniReader.Future;
-using System.Text.RegularExpressions;
 
-FSCIni ini = new FSCIni("", option =>
+FSCIni ini = @"
+[AccountInfo]
+Username = Jack
+Password = JacksPassword1234
+
+[Settings]
+EnableDarkmode = true
+RememberLogin = false
+ProgramWidth = 720
+ProgramHeight = 480
+";
+
+if (ini["Settings"]["ProgramWidth"].GetInt == 720)
 {
-    option.DetectComments = new Regex("Hey");
-});
+    ini["Settings"]["ProgramWidth"] = 1080;
+}
+
+Console.WriteLine(ini.ToString());
+;

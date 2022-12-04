@@ -16,7 +16,11 @@
     <PackageProjectUrl>https://github.com/Fabian2000/FSC-IniReader</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Fabian2000/FSC-IniReader.git</RepositoryUrl>
     <PackageTags>Ini;File;Ini-Reader;FSC-IniReader;Ini-Editor;File-Editor;Editor;Save;Database;Reader;Writer;Converter;Ini-Converter;IniParser;Ini-Parser;Parser</PackageTags>
-    <PackageReleaseNotes>Updated TargetFrameworks</PackageReleaseNotes>
+    <PackageReleaseNotes>Updated TargetFrameworks
+New Class
+New Methods
+New Namespace
+-&gt; A full remake with impovements</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Platforms>AnyCPU;ARM32;ARM64;x64;x86</Platforms>

@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace FSC_IniReader.Future
 {
     public sealed partial class FSCIniSection : IComparable<FSCIniSection>
     {
+        internal FSCIniSection() { }
+
         /// <summary>
         /// Gets or sets the value of a key
         /// </summary>
@@ -45,7 +50,7 @@ namespace FSC_IniReader.Future
                 return false;
             }
 
-            if (VerifyKey(key))
+            if (!VerifyKey(key))
             {
                 return false;
             }
@@ -151,6 +156,25 @@ namespace FSC_IniReader.Future
             return !_keyValues.Any();
         }
 
+        /// <summary>
+        /// Sorts the key values in ASC or DESC
+        /// </summary>
+        /// <param name="sortDirection">The direction of sorting the key values</param>
+        internal void Sort(ListSortDirection sortDirection)
+        {
+            _keyValues.Sort();
+
+            if (sortDirection == ListSortDirection.Descending)
+            {
+                _keyValues.Reverse();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public int CompareTo(FSCIniSection? other)
         {
             return Name.CompareTo(other?.Name);

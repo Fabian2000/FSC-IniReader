@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace FSC_IniReader.Future
@@ -9,6 +10,13 @@ namespace FSC_IniReader.Future
         {
             GetString = values.First();
             GetStringList = values;
+
+            GetBool = ConvertBool(GetString);
+            
+            foreach (var parseElement in GetStringList)
+            {
+                GetBoolList.Add(ConvertBool(parseElement));
+            }
 
             if (byte.TryParse(GetString, out var _))
             {
@@ -136,6 +144,9 @@ namespace FSC_IniReader.Future
         public string GetString { get; internal set; } = string.Empty;
         public List<string> GetStringList { get; internal set; } = new();
 
+        public bool GetBool { get; internal set; } = false;
+        public List<bool> GetBoolList { get; internal set; } = new();
+
         public byte GetByte { get; internal set; } = 0;
         public List<byte> GetByteList { get; internal set; } = new();
 
@@ -190,6 +201,16 @@ namespace FSC_IniReader.Future
         public static implicit operator FSCIniTypes(List<string> value)
         {
             return new(value);
+        }
+
+        public static implicit operator FSCIniTypes(bool value)
+        {
+            return new(new List<string>() { value.ToString() });
+        }
+
+        public static implicit operator FSCIniTypes(List<bool> value)
+        {
+            return new(ToStringList(value));
         }
 
         public static implicit operator FSCIniTypes(byte value)
@@ -290,6 +311,21 @@ namespace FSC_IniReader.Future
         public static implicit operator FSCIniTypes(List<decimal> value)
         {
             return new(ToStringList(value));
+        }
+
+        private bool ConvertBool(string parseElement)
+        {
+            if (parseElement.Equals("true", StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+            
+            if (parseElement.Equals("1", StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public override string ToString()
